@@ -3,4 +3,6 @@
 <h3>Account balance: <%= number_to_currency(@account.balance)%></h3> <br>
 
 <%= link_to "Iniciar transferência", new_account_transfer_path(@account.id), class: "link" %>
-<%= link_to "Send deposit", new_account_deposit_path(@account.id), class: "link"%>
+<%= link_to "Depositar", new_account_deposit_path(@account.id), class: "link"%>
+<%= link_to "Sacar", new_account_withdraw_path(@account.id), class: "link"%>
+<%= link_to "Ver histórico de transferência", account_transfers_path(@account.id), class: "link"%>

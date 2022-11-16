@@ -1,9 +1,6 @@
-<h1>New withdraw</h1>
+<h1>Request a withdraw</h1>
 
-<%= render "form", withdraw: @withdraw %>
-
-<br>
-
-<div>
-  <%= link_to "Back to withdraws", withdraws_path %>
-</div>
+<%= form_for @withdraw, url: account_withdraws_path(params[:account_id]) do |f| %>
+  <p> Amount: <%= f.text_field :amount %></p>
+  <%= f.submit "Solicitar saque"%>
+<% end %>
