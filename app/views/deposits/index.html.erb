@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Deposits</h1>
+
+<div id="deposits">
+  <% @deposits.each do |deposit| %>
+    <%= render deposit %>
+    <p>
+      <%= link_to "Show this deposit", deposit %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New deposit", new_deposit_path %>
