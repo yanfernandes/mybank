@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Transfers</h1>
+
+<div id="transfers">
+  <% @transfers.each do |transfer| %>
+    <%= render transfer %>
+    <p>
+      <%= link_to "Show this transfer", transfer %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New transfer", new_transfer_path %>
