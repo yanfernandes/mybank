@@ -8,6 +8,7 @@ class BanksController < ApplicationController
 
   # GET /banks/1 or /banks/1.json
   def show
+    @bank = Bank.find(params[:id])
   end
 
   # GET /banks/new
@@ -22,49 +23,33 @@ class BanksController < ApplicationController
   # POST /banks or /banks.json
   def create
     @bank = Bank.new(bank_params)
-
-    respond_to do |format|
-      if @bank.save
-        format.html { redirect_to bank_url(@bank), notice: "Bank was successfully created." }
-        format.json { render :show, status: :created, location: @bank }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @bank.errors, status: :unprocessable_entity }
-      end
+    if @bank.valid?
+      @bank.save
+      redirect_to bank_path(@bank)
+    else 
+      render :new
     end
   end
 
   # PATCH/PUT /banks/1 or /banks/1.json
   def update
-    respond_to do |format|
-      if @bank.update(bank_params)
-        format.html { redirect_to bank_url(@bank), notice: "Bank was successfully updated." }
-        format.json { render :show, status: :ok, location: @bank }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @bank.errors, status: :unprocessable_entity }
-      end
-    end
+    @bank.update(bank_params)
+    redirect_to bank_path(@bank.id)
   end
 
   # DELETE /banks/1 or /banks/1.json
   def destroy
     @bank.destroy
-
-    respond_to do |format|
-      format.html { redirect_to banks_url, notice: "Bank was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to banks_path
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_bank
-      @bank = Bank.find(params[:id])
-    end
+  def find_bank
+    @bank = Bank.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def bank_params
-      params.require(:bank).permit(:name)
-    end
+  def bank_params
+    params.require(:bank).permit()
+  end
 end
