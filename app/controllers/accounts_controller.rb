@@ -1,6 +1,4 @@
 class AccountsController < ApplicationController
-  before_action :set_account, only: %i[ show edit update destroy ]
-
   # GET /accounts or /accounts.json
   def index
     @accounts = Account.all
