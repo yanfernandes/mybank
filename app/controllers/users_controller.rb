@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
-  before_action :authorize
   # GET /users or /users.json
   def index
     @users = User.all
