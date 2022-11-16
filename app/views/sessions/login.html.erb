@@ -1,0 +1,21 @@
+<div> 
+  <h1>Login</h1> 
+</div>
+
+<div class="formerror">
+  <% if flash[:error] %>
+    <%= flash[:error]%>
+  <% end %>
+</div>
+
+<div class="form">
+  <%= form_tag login_path do %>
+    <%= label :username, "Username" %>
+    <%= text_field_tag :username %><br>
+    <%= label :password, "Password" %>
+    <%= password_field_tag :password %><br>
+  <%= submit_tag "Log in" %>
+<% end %>
+</div>
+
+<%= link_to "Voltar", root_path, class: "link"%>
