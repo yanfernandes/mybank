@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Criação de um sistema de banco, onde é possível fazer transações como saque, depósito e transferência entre contas.
 
-Things you may want to cover:
+# Instruções de uso
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Fazer um git clone do projeto: ``git clone https://github.com/yanfernandes/mybank.git``
+- Criar banco de dados,fazer a migração e popular: ``rails db:create db:migrate db:seed``
+- Instalar as dependencias: ``bundle``
+- Subir o servidor: ``rails s``
