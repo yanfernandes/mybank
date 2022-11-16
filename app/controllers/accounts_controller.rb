@@ -23,7 +23,7 @@ class AccountsController < ApplicationController
 
   # POST /accounts or /accounts.json
   def create
-    @account = Account.create(bank_id: params[:account][:bank_id], user_id: params[:user_id])
+    @account = Account.create(bank_id: params[:account][:bank_id], user_id: params[:user_id], balance: params[:account][:balance])
     redirect_to user_account_path(@account.user_id, @account.id)
   end
 

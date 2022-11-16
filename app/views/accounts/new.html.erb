@@ -4,6 +4,8 @@
   <%= form_for @account, url: user_accounts_path(params[:user_id]) do |f| %>
     <li><%= f.label "Bank:" %>
     <%= f.collection_select(:bank_id, Bank.all, :id, :name, prompt: true) %><br></li>
+    <li><%=f.label "Balance:"%>
+    <%= f.text_field :balance %></li>
     <%= f.submit %>
   <% end %>
 </ul>

@@ -1,9 +1,6 @@
-<h1>New deposit</h1>
+<h1>Request a deposit</h1> </div>
 
-<%= render "form", deposit: @deposit %>
-
-<br>
-
-<div>
-  <%= link_to "Back to deposits", deposits_path %>
-</div>
+<%= form_for @deposit, url: account_deposits_path(params[:account_id]) do |f| %>
+  <p> Amount: <%= f.text_field :amount %></p>
+  <%= f.submit "Depositar"%>
+<% end %>
