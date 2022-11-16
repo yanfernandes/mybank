@@ -1,6 +1,7 @@
 <%= form_for @transfer, url: account_transfers_path(params[:account_id]) do |f| %>
+
     <%= f.label :receiver, "Destino:" %>
-    <%= f.collection_select(:receiver_id, @recipients, :id, :username, prompt: true) %> 
+    <%= f.collection_select(:receiver_id, Account.sorted_accounts, :id, :get_user_with_bank, prompt: true) %> 
     <%= f.label :amount, "Valor da transferência:" %>
     <%= f.text_field :amount %>
     <%= f.submit %>

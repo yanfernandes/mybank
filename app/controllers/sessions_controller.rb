@@ -11,7 +11,6 @@ class SessionsController < ApplicationController
       flash[:message] = "Seja bem vindo, #{@user.username}!"
       redirect_to user_path(@user.id)
     else
-      flash[:error] = "Ops! Não foram encontradas credenciais válidas."
       redirect_to login_path
     end
   end

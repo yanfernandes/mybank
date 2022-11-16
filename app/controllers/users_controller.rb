@@ -45,21 +45,21 @@ class UsersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def find_user
-      @user = User.find(params[:id])
-    end
+  def find_user
+    @user = User.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:username, :password, :password_confirmation)
-    end
+  # Only allow a list of trusted parameters through.
+  def user_params
+    params.require(:user).permit(:username, :password, :password_confirmation)
+  end
 
-    def correct_user
-      @user = User.find(params[:id])
-      if @user.logged_in
-      else
-        flash[:danger] = "Você não tem acesso a esta página"
-        redirect_to user_path(@user)
-      end
+  def correct_user
+    @user = User.find(params[:id])
+    if @user.logged_in
+    else
+      flash[:danger] = "Você não tem acesso a esta página"
+      redirect_to user_path(@user)
     end
+  end
 end

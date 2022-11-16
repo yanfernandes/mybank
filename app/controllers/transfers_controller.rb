@@ -1,7 +1,7 @@
 class TransfersController < ApplicationController
   # GET /transfers or /transfers.json
   def index
-    @transfers = Transfer.all
+    @transfers = Transfer.where("sender_id = ? or receiver_id = ?", params[:account_id], params[:account_id])
   end
 
   # GET /transfers/1 or /transfers/1.json
@@ -22,8 +22,10 @@ class TransfersController < ApplicationController
 
   # POST /transfers or /transfers.json
   def create
-    @transfer = Transfer.create(transfer_params)
-    redirect_to accounts_path(@transfer.sender)
+    @transfer = Transfer.create(sender_id: params[:account_id], receiver_id: params[:transfer][:receiver_id], amount: params[:transfer][:amount])
+    @transfer.start_transfer(@transfer.amount)
+    @transfer.save
+    redirect_to user_account_path(session[:user_id], @transfer.sender)
   end
 
   # PATCH/PUT /transfers/1 or /transfers/1.json

@@ -1,5 +1,8 @@
 <h1><%=@account.bank.name%></h1>
+
+<h3>Account balance: <%= number_to_currency(@account.balance)%></h3> <br>
+
 <%= link_to "Transferir para uma nova conta", new_account_transfer_path(@account.id) %>
   <%= collection_select(:transfer, :receiver_id, Account.all, :id, :username, prompt: true)%>
   <br>
-<%=link_to "Transferir para outro destinatário", new_account_transfer_path(@account.id)%>
+<%= link_to "Histórico de transferências", account_transfers_path(@account.id)%>
