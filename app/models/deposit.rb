@@ -1,4 +1,4 @@
 class Deposit < ApplicationRecord
-  belongs_to :user
+  belongs_to :account
   belongs_to :bank
 end

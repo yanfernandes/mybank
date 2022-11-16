@@ -17,7 +17,7 @@ class DepositsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create deposit" do
     assert_difference("Deposit.count") do
-      post deposits_url, params: { deposit: { amount: @deposit.amount, bank_id: @deposit.bank_id, user_id: @deposit.user_id } }
+      post deposits_url, params: { deposit: { account_id: @deposit.account_id, amount: @deposit.amount, bank_id: @deposit.bank_id } }
     end
 
     assert_redirected_to deposit_url(Deposit.last)
@@ -34,7 +34,7 @@ class DepositsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update deposit" do
-    patch deposit_url(@deposit), params: { deposit: { amount: @deposit.amount, bank_id: @deposit.bank_id, user_id: @deposit.user_id } }
+    patch deposit_url(@deposit), params: { deposit: { account_id: @deposit.account_id, amount: @deposit.amount, bank_id: @deposit.bank_id } }
     assert_redirected_to deposit_url(@deposit)
   end
 

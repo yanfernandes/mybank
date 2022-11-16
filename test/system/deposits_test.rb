@@ -14,9 +14,9 @@ class DepositsTest < ApplicationSystemTestCase
     visit deposits_url
     click_on "New deposit"
 
+    fill_in "Account", with: @deposit.account_id
     fill_in "Amount", with: @deposit.amount
     fill_in "Bank", with: @deposit.bank_id
-    fill_in "User", with: @deposit.user_id
     click_on "Create Deposit"
 
     assert_text "Deposit was successfully created"
@@ -27,9 +27,9 @@ class DepositsTest < ApplicationSystemTestCase
     visit deposit_url(@deposit)
     click_on "Edit this deposit", match: :first
 
+    fill_in "Account", with: @deposit.account_id
     fill_in "Amount", with: @deposit.amount
     fill_in "Bank", with: @deposit.bank_id
-    fill_in "User", with: @deposit.user_id
     click_on "Update Deposit"
 
     assert_text "Deposit was successfully updated"

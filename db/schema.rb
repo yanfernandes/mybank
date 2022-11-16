@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_16_033516) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_16_035256) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,13 +31,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_033516) do
   end
 
   create_table "deposits", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "account_id", null: false
     t.bigint "bank_id", null: false
     t.decimal "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_deposits_on_account_id"
     t.index ["bank_id"], name: "index_deposits_on_bank_id"
-    t.index ["user_id"], name: "index_deposits_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,8 +59,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_033516) do
 
   add_foreign_key "accounts", "banks"
   add_foreign_key "accounts", "users"
+  add_foreign_key "deposits", "accounts"
   add_foreign_key "deposits", "banks"
-  add_foreign_key "deposits", "users"
   add_foreign_key "withdraws", "accounts"
   add_foreign_key "withdraws", "banks"
 end
