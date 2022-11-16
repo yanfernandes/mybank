@@ -3,7 +3,7 @@
   <ul>
     <%@user.accounts.each do |account|%>
       <li><%= link_to account.bank.name, user_account_path(@user.id, account) %>
-      <%=" balance: #{number_to_currency(account.balance)}" %></li>
+      <%=" Saldo: #{number_to_currency(account.balance)}" %></li>
     <% end %>
   </ul>
 
@@ -11,3 +11,4 @@
   <%= button_to "Editar usuário", edit_user_path(@user.id), method: :get %>
   <%= button_to "Log out", logout_path, method: :get %>
   <%= button_to "Home", users_path, method: :get %>
+
