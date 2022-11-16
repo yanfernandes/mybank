@@ -1,32 +1,7 @@
-<%= form_with(model: transfer) do |form| %>
-  <% if transfer.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(transfer.errors.count, "error") %> prohibited this transfer from being saved:</h2>
-
-      <ul>
-        <% transfer.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :sender_id, style: "display: block" %>
-    <%= form.number_field :sender_id %>
-  </div>
-
-  <div>
-    <%= form.label :receiver_id, style: "display: block" %>
-    <%= form.number_field :receiver_id %>
-  </div>
-
-  <div>
-    <%= form.label :amount, style: "display: block" %>
-    <%= form.text_field :amount %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+<%= form_for @transfer, url: account_transfers_path(params[:account_id]) do |f| %>
+    <%= f.label :receiver, "Destino:" %>
+    <%= f.collection_select(:receiver_id, @recipients, :id, :username, prompt: true) %> 
+    <%= f.label :amount, "Valor da transferência:" %>
+    <%= f.text_field :amount %>
+    <%= f.submit %>
 <% end %>

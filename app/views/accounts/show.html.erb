@@ -1,10 +1,5 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @account %>
-
-<div>
-  <%= link_to "Edit this account", edit_account_path(@account) %> |
-  <%= link_to "Back to accounts", accounts_path %>
-
-  <%= button_to "Destroy this account", @account, method: :delete %>
-</div>
+<h1><%=@account.bank.name%></h1>
+<%= link_to "Transferir para uma nova conta", new_account_transfer_path(@account.id) %>
+  <%= collection_select(:transfer, :receiver_id, Account.all, :id, :username, prompt: true)%>
+  <br>
+<%=link_to "Transferir para outro destinatário", new_account_transfer_path(@account.id)%>

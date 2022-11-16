@@ -7,5 +7,6 @@
   </ul>
 
   <%= button_to "Criar nova conta", new_account_path, method: :get %> 
+  <%= button_to "Editar usuário", edit_user_path(@user.id), method: :get %>
   <%= button_to "Log out", logout_path, method: :get %>
   <%= button_to "Home", users_path, method: :get %>
