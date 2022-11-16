@@ -5,10 +5,12 @@
         <% end %>
     </ul>
 <% end %>
+
+
 <%= form_for @user do |f| %>
-    <%= f.label :username, "Insera um novo username" %> <br>
+    <%= f.label :username, "Insira novo nome de usuário" %> 
     <%= f.text_field :username %> <br>
-    <%= f.label :password, "Senha com mínimo de 6 digitos" %> <br>
-    <%= f.password_field :password %> <br> <br>
-    <%= f.submit 'Criar usuário' %>
+    <%= f.label :password, "Insira nova senha" %>
+    <%= f.password_field :password %> <br> 
+    <%= f.submit 'Enviar' %>
 <% end %>

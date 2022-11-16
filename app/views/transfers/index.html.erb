@@ -1,14 +1,7 @@
-<p style="color: green"><%= notice %></p>
+<h1>Transfer history</h1>
 
-<h1>Transfers</h1>
-
-<div id="transfers">
-  <% @transfers.each do |transfer| %>
-    <%= render transfer %>
-    <p>
-      <%= link_to "Show this transfer", transfer %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New transfer", new_transfer_path %>
+<ul>
+<% @transfers.each do |transfer| %>
+  <li><%= "#{transfer.sender.user.username} enviou #{number_to_currency(transfer.amount)} para #{transfer.receiver.user.username}, através da conta: #{transfer.receiver.bank.name}" %></li>
+<% end %>
+</ul>

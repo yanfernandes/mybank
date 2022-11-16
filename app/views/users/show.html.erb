@@ -1,5 +1,5 @@
- <div> Olá, <%= @user.username %> </div> 
-  <h3>Accounts</h3>
+ <h1>Olá, <%= @user.username %> </h2> 
+  <h3>Suas contas</h3>
   <ul>
     <%@user.accounts.each do |account|%>
       <li><%= link_to account.bank.name, user_account_path(@user.id, account) %>
