@@ -15,6 +15,7 @@ gem "redis", "~> 4.0"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem 'bcrypt', '~> 3.1.7' 
 gem "bootsnap", require: false
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

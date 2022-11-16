@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+Bank.destroy_all
+
+5.times {Bank.create(name: Faker::Bank.unique.name)}
