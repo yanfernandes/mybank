@@ -3,6 +3,7 @@ class Account < ApplicationRecord
   belongs_to :bank
 
   has_many :deposits
+  has_many :withdraws
   has_many :received_transfers, foreign_key: :receiver_id, class_name: 'Transfer'
   has_many :receivers, through: :received_transfers
 
