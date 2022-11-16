@@ -7,7 +7,5 @@ class User < ApplicationRecord
   validates_confirmation_of :password
   validates_presence_of :password_confirmation, { case_sensitive: true}
 
-
   has_secure_password
-
 end

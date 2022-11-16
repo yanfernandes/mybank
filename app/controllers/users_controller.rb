@@ -58,7 +58,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       if @user.logged_in
       else
-        flash[:danger] = "You do not have access to that page"
+        flash[:danger] = "Você não tem acesso a esta página"
         redirect_to user_path(@user)
       end
     end
